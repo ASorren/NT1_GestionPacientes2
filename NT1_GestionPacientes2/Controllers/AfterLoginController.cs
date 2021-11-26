@@ -94,6 +94,25 @@ namespace NT1_GestionPacientes2.Controllers
 
             return View(paciente);
         }
+
+
+        [HttpPost, ActionName("DeletePacient")]
+        public async Task<IActionResult> DeletePacientRegister(int? id)
+        {
+            var paciente = await _context.Paciente.FindAsync(id);
+            if (paciente  == null)
+            {
+                return View();
+            }
+
+            _context.Paciente.Remove(paciente);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Pacientes));
+           
+        }
+
+
+
         [HttpGet]
         public IActionResult DetailsPacient(int? id)
         {
