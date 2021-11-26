@@ -1,0 +1,28 @@
+﻿@model NT1_GestionPacientes2.Models.Paciente
+
+@{
+    ViewData["Title"] = "Detalle del Paciente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalle del Paciente</h1>
+
+<h4>Paciente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Nombre: </strong> @Html.DisplayFor(m => m.nombre)</li>
+            <li class="list-group-item"><strong>Beneficio: </strong> @Html.DisplayFor(m => m.beneficio)</li>
+            <li class="list-group-item"><strong>Edad: </strong> @Html.DisplayFor(m => m.edad)</li>
+            <li class="list-group-item"><strong>Telefono: </strong> @Html.DisplayFor(m => m.telefono)</li>
+            <li class="list-group-item"><strong>Email: </strong> @Html.DisplayFor(m => m.email)</li>
+            <li class="list-group-item"><strong>Notas: </strong> @Html.DisplayFor(m => m.notas)</li>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Pacientes">Back to List</a>
+</div>
+

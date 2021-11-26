@@ -31,7 +31,7 @@ namespace NT1_GestionPacientes2.Controllers
         }
 
         [HttpGet]
-        public  IActionResult CreatePacient()
+        public IActionResult CreatePacient()
         {
             return View();
         }
@@ -54,7 +54,7 @@ namespace NT1_GestionPacientes2.Controllers
         {
             var paciente = _context.Paciente.Find(id);
 
-            if(paciente == null)
+            if (paciente == null)
             {
                 return NotFound();
             }
@@ -94,6 +94,20 @@ namespace NT1_GestionPacientes2.Controllers
 
             return View(paciente);
         }
+        [HttpGet]
+        public IActionResult DetailsPacient(int? id)
+        {
+            var paciente = _context.Paciente.Find(id);
+
+            if (paciente == null)
+            {
+                return NotFound();
+            }
+
+            return View(paciente);
+        }
+
+
 
     }
 
