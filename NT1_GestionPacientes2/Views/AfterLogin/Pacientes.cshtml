@@ -1,0 +1,97 @@
+﻿@model IEnumerable<NT1_GestionPacientes2.Models.Paciente>
+@{
+    ViewData["Title"] = "Pacientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Pacientes</h1>
+
+
+
+<h1 class="text-center">Crud De Pacientes wacho</h1>
+<div class="row">
+    <div class="col-12">
+
+        <div class="float-right">
+            <a asp-action="CreatePacient" asp-controller="AfterLogin" class="btn btn-success"> Ingresar Paciente</a>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card border">
+                <div class="card-header">
+                    <h3><strong>Lista de Pacientes</strong></h3>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <!--usamos asp para la logica, si hay modelos hacer tal cosa -->
+
+                    @if (Model.Count() > 0)
+                    {
+                        <table class="table table-bordered" id="PacientsTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <!-- cabeceras de la tabla -->
+                                    <th>@Html.DisplayNameFor(m => m.nombre)</th>
+                                    <th>@Html.DisplayNameFor(m => m.beneficio)</th>
+                                    <th>@Html.DisplayNameFor(m => m.telefono)</th>
+                                    <th>@Html.DisplayNameFor(m => m.email)</th>
+                                    <th>@Html.DisplayNameFor(m => m.edad)</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                // recorrer registros de base de datos
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@Html.DisplayFor(m => item.nombre)</td>
+                                    <td>@Html.DisplayFor(m => item.beneficio)</td>
+                                    <td>@Html.DisplayFor(m => item.telefono)</td>
+                                    <td>@Html.DisplayFor(m => item.email)</td>
+                                    <td>@Html.DisplayFor(m => item.edad)</td>
+
+                                    <td>
+                                        <!-- botones del abm la ruta especifica el id del elemento -->
+                                        <a class="btn btn-primary" asp-action="EditPacient" asp-route-id="@item.id">Editar </a>
+                                        <a class="btn btn-info" asp-action="Details" asp-all-route-id="@item.id">Detalles </a>
+                                        <a class="btn btn-danger" asp-action="DeletePacient" asp-all-route-id="@item.id">Eliminar </a>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    }
+                    else
+                    {
+                        <p>No hay registros </p>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+    <script>
+        // llamamos a datatable con jquery
+
+        $(document).ready(function () {
+            $('#PacientsTable').DataTable({
+
+            });
+        });
+
+    </script>
+}
+
