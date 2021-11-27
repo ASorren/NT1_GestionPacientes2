@@ -126,9 +126,28 @@ namespace NT1_GestionPacientes2.Controllers
             return View(paciente);
         }
 
+        [HttpGet]
+        public IActionResult CreateTurn()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateTurn(Turno turno)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Turno.Add(turno);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Turnos));
+            }
+            return View();
+        }
+
+       
 
     }
+
 
 
 }
