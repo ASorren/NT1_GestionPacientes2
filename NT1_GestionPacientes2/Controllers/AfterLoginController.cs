@@ -144,7 +144,31 @@ namespace NT1_GestionPacientes2.Controllers
             return View();
         }
 
-       
+
+        public IActionResult EditTurn(int? id)
+        {
+            var turno = _context.Turno.Find(id);
+
+            if (turno == null)
+            {
+                return NotFound();
+            }
+
+            return View(turno);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditTurn(Turno turno)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(turno);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Turnos));
+            }
+            return View();
+        }
+
 
     }
 
