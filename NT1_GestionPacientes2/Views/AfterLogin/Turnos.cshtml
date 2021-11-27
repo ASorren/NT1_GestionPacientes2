@@ -54,9 +54,9 @@
                                         <td>@Html.DisplayFor(m => item.obraSocial)</td>
                                         <td>
                                             <!-- botones del abm la ruta especifica el id del elemento -->
-                                            <a class="btn btn-primary" asp-action="Edit" asp-all-route-id="@item.id">Editar </a>
-                                            <a class="btn btn-info" asp-action="Details" asp-all-route-id="@item.id">Detalles </a>
-                                            <a class="btn btn-danger" asp-action="Delete" asp-all-route-id="@item.id">Eliminar </a>
+                                            <a class="btn btn-primary" asp-action="EditTurn" asp-route-id="@item.id">Editar </a>
+                                            <a class="btn btn-info" asp-action="DetailsTurn" asp-route-id="@item.id">Detalles </a>
+                                            <a class="btn btn-danger" asp-action="DeleteTurn" asp-route-id="@item.id">Eliminar </a>
                                         </td>
                                     </tr>
                                 }
