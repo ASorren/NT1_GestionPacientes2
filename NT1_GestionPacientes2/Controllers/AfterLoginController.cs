@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NT1_GestionPacientes2.Data;
@@ -167,6 +168,35 @@ namespace NT1_GestionPacientes2.Controllers
                 return RedirectToAction(nameof(Turnos));
             }
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult DeleteTurn(int? id)
+        {
+            var turno = _context.Turno.Find(id);
+
+            if (turno == null)
+            {
+                return NotFound();
+            }
+
+            return View(turno);
+        }
+
+
+        [HttpPost, ActionName("DeleteTurn")]
+        public async Task<IActionResult> DeleteTurnRegister(int? id)
+        {
+            var turno = await _context.Turno.FindAsync(id);
+            if (turno == null)
+            {
+                return View();
+            }
+
+            _context.Turno.Remove(turno);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Turnos));
+
         }
 
 

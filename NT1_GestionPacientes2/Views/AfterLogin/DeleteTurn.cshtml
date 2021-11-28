@@ -1,0 +1,50 @@
+﻿@model NT1_GestionPacientes2.Models.Turno
+
+@{
+    ViewData["Title"] = "Eliminar Turno";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Eliminar Turno</h1>
+
+<h4>Turno</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DeleteTurn">
+            <input type="hidden" value="Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" class="form-control" readonly />
+                <span asp-validation-for="nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="horario" class="control-label"></label>
+                <input asp-for="horario" class="form-control" readonly />
+                <span asp-validation-for="horario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tipoConsulta" class="control-label"></label>
+                <input asp-for="tipoConsulta" class="form-control" readonly />
+                <span asp-validation-for="tipoConsulta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="obraSocial" class="control-label"></label>
+                <input asp-for="obraSocial" class="form-control" readonly />
+                <span asp-validation-for="obraSocial" class="text-danger"></span>
+            </div>
+         
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Eliminar Turno</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Turnos">Back to List</a>
+</div>
+
