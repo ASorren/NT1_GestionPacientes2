@@ -34,6 +34,15 @@ namespace NT1_GestionPacientes2
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddAuthentication().
+                AddGoogle(options =>
+                {
+                    options.ClientId = "280282978976-v9tipfe95ugsue05ovvbeds99ejn80th.apps.googleusercontent.com";
+                    options.ClientSecret = "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";
+                });
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
