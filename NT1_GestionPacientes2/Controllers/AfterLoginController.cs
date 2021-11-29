@@ -10,10 +10,12 @@ using NT1_GestionPacientes2.Models;
 
 namespace NT1_GestionPacientes2.Controllers
 {
+ 
     public class AfterLoginController : Controller
     {
         private readonly ApplicationDbContext _context;
 
+        
         public AfterLoginController(ApplicationDbContext context)
         {
             _context = context;
